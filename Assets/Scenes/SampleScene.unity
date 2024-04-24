@@ -136,6 +136,14 @@ PrefabInstance:
       value: Tile (1)
       objectReference: {fileID: 0}
     - target: {fileID: 4169899989518883320, guid: 9a292ea5660efe84ea5f681ee1ad1434, type: 3}
+      propertyPath: _up
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4169899989518883320, guid: 9a292ea5660efe84ea5f681ee1ad1434, type: 3}
+      propertyPath: _left
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4169899989518883320, guid: 9a292ea5660efe84ea5f681ee1ad1434, type: 3}
       propertyPath: _position.x
       value: 0
       objectReference: {fileID: 0}
@@ -220,6 +228,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _previousTiles: {fileID: 0}
   _newTiles: {fileID: 0}
+  _newTilesUI: {fileID: 0}
 --- !u!4 &182186830
 Transform:
   m_ObjectHideFlags: 0
@@ -367,6 +376,14 @@ PrefabInstance:
     - target: {fileID: 456193188147425463, guid: 9a292ea5660efe84ea5f681ee1ad1434, type: 3}
       propertyPath: m_Name
       value: Tile (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4169899989518883320, guid: 9a292ea5660efe84ea5f681ee1ad1434, type: 3}
+      propertyPath: _up
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4169899989518883320, guid: 9a292ea5660efe84ea5f681ee1ad1434, type: 3}
+      propertyPath: _left
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4169899989518883320, guid: 9a292ea5660efe84ea5f681ee1ad1434, type: 3}
       propertyPath: _position.x
@@ -754,6 +771,14 @@ PrefabInstance:
     - target: {fileID: 456193188147425463, guid: 9a292ea5660efe84ea5f681ee1ad1434, type: 3}
       propertyPath: m_Name
       value: Tile (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4169899989518883320, guid: 9a292ea5660efe84ea5f681ee1ad1434, type: 3}
+      propertyPath: _up
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4169899989518883320, guid: 9a292ea5660efe84ea5f681ee1ad1434, type: 3}
+      propertyPath: _down
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4169899989518883320, guid: 9a292ea5660efe84ea5f681ee1ad1434, type: 3}
       propertyPath: _position.x
@@ -1227,6 +1252,7 @@ GameObject:
   - component: {fileID: 856533636}
   - component: {fileID: 856533635}
   - component: {fileID: 856533634}
+  - component: {fileID: 856533637}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -1297,7 +1323,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 856533635}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 182186829}
+        m_TargetAssemblyTypeName: TileManager, Assembly-CSharp
+        m_MethodName: OnSelectUITile
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 856533637}
+          m_ObjectArgumentAssemblyTypeName: TileSelection, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &856533635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1336,6 +1374,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 856533632}
   m_CullTransparentMesh: 1
+--- !u!114 &856533637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 856533632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 217e5606508d4ad439e49d4e26a89993, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _up: 0
+  _down: 0
+  _left: 0
+  _right: 0
 --- !u!1 &858417493
 GameObject:
   m_ObjectHideFlags: 0
@@ -1589,6 +1643,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 217e5606508d4ad439e49d4e26a89993, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _up: 0
+  _down: 0
+  _left: 0
+  _right: 0
 --- !u!114 &1074197962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1626,6 +1684,14 @@ PrefabInstance:
     - target: {fileID: 456193188147425463, guid: 9a292ea5660efe84ea5f681ee1ad1434, type: 3}
       propertyPath: m_Name
       value: Tile (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4169899989518883320, guid: 9a292ea5660efe84ea5f681ee1ad1434, type: 3}
+      propertyPath: _left
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4169899989518883320, guid: 9a292ea5660efe84ea5f681ee1ad1434, type: 3}
+      propertyPath: _right
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4169899989518883320, guid: 9a292ea5660efe84ea5f681ee1ad1434, type: 3}
       propertyPath: _position.y
@@ -2152,7 +2218,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1606783820}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 182186828}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1606783820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2525,6 +2603,18 @@ PrefabInstance:
     - target: {fileID: 456193188147425463, guid: 9a292ea5660efe84ea5f681ee1ad1434, type: 3}
       propertyPath: m_Name
       value: Tile
+      objectReference: {fileID: 0}
+    - target: {fileID: 4169899989518883320, guid: 9a292ea5660efe84ea5f681ee1ad1434, type: 3}
+      propertyPath: _up
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4169899989518883320, guid: 9a292ea5660efe84ea5f681ee1ad1434, type: 3}
+      propertyPath: _down
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4169899989518883320, guid: 9a292ea5660efe84ea5f681ee1ad1434, type: 3}
+      propertyPath: _right
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4169899989518883320, guid: 9a292ea5660efe84ea5f681ee1ad1434, type: 3}
       propertyPath: _position.x

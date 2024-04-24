@@ -7,7 +7,7 @@ public class TileManager : MonoBehaviour
 
     [SerializeField] private Tiles _previousTiles = null;
     [SerializeField] private Tiles _newTiles = null;
-    [SerializeField] private Tiles _newTilesUI = null;
+    [SerializeField] private TileSelection _newTilesUI = null;
 
 
     public Tiles PreviousTiles { get => _previousTiles; set => _previousTiles = value; }
@@ -27,6 +27,7 @@ public class TileManager : MonoBehaviour
 
     public void OnSelectUITile(TileSelection tileSelection)
     {
+        _newTilesUI = tileSelection;
 
     }
 
