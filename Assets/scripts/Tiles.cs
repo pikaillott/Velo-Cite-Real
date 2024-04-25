@@ -20,7 +20,7 @@ public class Tiles : MonoBehaviour
 
     [SerializeField] private Vector2 _position;
 
-    [SerializeField] private LineRenderer lineRenderer;
+    [SerializeField] private LineRenderer _lineRenderer;
 
     public Vector2 _Position { get => _position; set => _position = value; }
 
@@ -41,7 +41,7 @@ public class Tiles : MonoBehaviour
     #region Function TILE ONMOUSE OVER
     private void _OnMouseOver()
     {
-        if (Input.GetMouseButtonDown(0) && _tileManager.NewTiles != null) //to do : "vÈrifier si elle peut se connecter a la prochaine tile + si elles sont bien ‡ cÙtÈ".
+        if (Input.GetMouseButtonDown(0) && _tileManager.NewTiles != null && _tileManager.NewTilesUI != null) //to do : "v√©rifier si elle peut se connecter a la prochaine tile + si elles sont bien √† c√¥t√©".
         {
             if (this._position.x == _tileManager.PreviousTiles._Position.x + 1 && this._position.y == _tileManager.PreviousTiles._Position.y) //take pos x, check if pos x is +1 in x, & if pos.y is = to this tile.
             {
@@ -69,54 +69,78 @@ public class Tiles : MonoBehaviour
 
     #endregion
 
-    private void ChangeTile() //to do
+    private void ChangeTile() //change UI Tile to Map tile
     {
-        if (_tileManager.NewTiles._up && _tileManager.PreviousTiles._down || _tileManager.NewTiles._down && _tileManager.PreviousTiles._up || _tileManager.NewTiles._left && _tileManager.PreviousTiles._right || _tileManager.NewTiles._right && _tileManager.PreviousTiles._left) 
+        if (_tileManager.NewTiles._up && _tileManager.PreviousTiles._down || _tileManager.NewTiles._down && _tileManager.PreviousTiles._up || _tileManager.NewTiles._left && _tileManager.PreviousTiles._right || _tileManager.NewTiles._right && _tileManager.PreviousTiles._left)
         {
-
+            this._up = _tileManager.NewTiles._up;
+            this._down = _tileManager.NewTiles._down;
+            this._left = _tileManager.NewTiles._left;
+            this._right = _tileManager.NewTiles._right;
+            UpdateLineRenderer();
         }
 
     }
 
     #region Function LINE RENDERER CONTROLLER
 
-    private void UpdateLineRenderer()
+    private void UpdateLineRenderer() //update line renderer 
     {
-        lineRenderer.positionCount = 3;
-        lineRenderer.SetPosition(1, _centerTransform.position);
+        _lineRenderer.positionCount = 3;
+        _lineRenderer.SetPosition(1, _centerTransform.position);
+        //le line renderer va forc√©ment pass√© par le milieu de la tuille
+        
+        //puis on regarde quelle direction est prise par la tile
 
         if (_up)
         {
-            lineRenderer.SetPosition(0, _upTransform.position);
-            if (_down) lineRenderer.SetPosition(2, new Vector2(-0.5f, 0));
-            else if (_left) lineRenderer.SetPosition(2, new Vector2(0, -0.5f));
-            else if (_right) lineRenderer.SetPosition(2, new Vector2(0, 0.5f));
+            _lineRenderer.SetPosition(0, _upTransform.position);
+            if (_down) _lineRenderer.SetPosition(2, _downTransform.position);
+            else if (_left) _lineRenderer.SetPosition(2, _leftTransform.position);
+            else if (_right) _lineRenderer.SetPosition(2, _rightTransform.position);
+            
         }
+        
 
         else if (_down)
         {
-            lineRenderer.SetPosition(0, _downTransform.position);
-            if (_up) lineRenderer.SetPosition(2, new Vector2(0.5f, 0));
-            else if (_left) lineRenderer.SetPosition(2, new Vector2(0, -0.5f));
-            else if (_right) lineRenderer.SetPosition(2, new Vector2(0, 0.5f));
+            _lineRenderer.SetPosition(0, _downTransform.position);
+            if (_up) _lineRenderer.SetPosition(2,_upTransform.position);
+            else if (_left) _lineRenderer.SetPosition(2, _leftTransform.position);
+            else if (_right) _lineRenderer.SetPosition(2, _rightTransform.position);
         }
 
         else if (_left)
         {
-            lineRenderer.SetPosition(0, _leftTransform.position);
-            if (_up) lineRenderer.SetPosition(2, new Vector2(0.5f, 0));
-            else if (_down) lineRenderer.SetPosition(2, new Vector2(-0.5f, 0));
-            else if (_right) lineRenderer.SetPosition(2, new Vector2(0, 0.5f));
+            _lineRenderer.SetPosition(0, _leftTransform.position);
+            if (_up) _lineRenderer.SetPosition(2, _upTransform.position);
+            else if (_down) _lineRenderer.SetPosition(2, _downTransform.position);
+            else if (_right) _lineRenderer.SetPosition(2, _rightTransform.position);
         }
 
         else if (_right)
         {
-            lineRenderer.SetPosition(0, _rightTransform.position);
-            if (_up) lineRenderer.SetPosition(2, new Vector2(0.5f, 0));
-            else if (_down) lineRenderer.SetPosition(2, new Vector2(-0.5f, 0));
-            else if (_left) lineRenderer.SetPosition(2, new Vector2(0, -0.5f));
+            _lineRenderer.SetPosition(0, _rightTransform.position);
+            if (_up) _lineRenderer.SetPosition(2, _upTransform.position);
+            else if (_down) _lineRenderer.SetPosition(2, _downTransform.position);
+            else if (_left) _lineRenderer.SetPosition(2, _leftTransform.position);
         }
 
+    }
+
+    public void StartTile() //start tile
+    {
+        _lineRenderer.positionCount = 2;
+        _lineRenderer.SetPosition(0, _centerTransform.position);
+        if(_up)
+            _lineRenderer.SetPosition(1, _upTransform.position);
+        else if (_down)
+            _lineRenderer.SetPosition(1, _downTransform.position);
+        else if (_left)
+            _lineRenderer.SetPosition(1, _leftTransform.position);
+        else if (_right)
+            _lineRenderer.SetPosition(1, _rightTransform.position);
+            
     }
 
     #endregion

@@ -12,24 +12,25 @@ public class TileManager : MonoBehaviour
 
     public Tiles PreviousTiles { get => _previousTiles; set => _previousTiles = value; }
     public Tiles NewTiles { get => _newTiles; set => _newTiles = value; }
-
-
-    void Start()
-    {
-        
-    }
-
-
-    void Update()
-    {
-        
-    }
+    public TileSelection NewTilesUI { get => _newTilesUI; set => _newTilesUI = value; }
+    
 
     public void OnSelectUITile(TileSelection tileSelection)
     {
+        if (tileSelection == null)
+            return;
         _newTilesUI = tileSelection;
+    }
+
+    private void SetStartTile()
+    {
+        Tiles[] allTiles= FindObjectsOfType<Tiles>();
+        int randomTile = Random.Range(0, allTiles.Length);
+        PreviousTiles = allTiles[randomTile];
+        PreviousTiles.StartTile();
 
     }
+    
 
 
 
