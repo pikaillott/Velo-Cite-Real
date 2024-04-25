@@ -9,7 +9,8 @@ public class Tiles : MonoBehaviour
     [SerializeField] private bool _down = false;
     [SerializeField] private bool _left = false;
     [SerializeField] private bool _right = false;
-
+    [SerializeField] private bool isFirst  = false;
+    
     [SerializeField] private Transform _upTransform;
     [SerializeField] private Transform _downTransform;
     [SerializeField] private Transform _leftTransform;
@@ -43,30 +44,16 @@ public class Tiles : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && _tileManager.NewTilesUI != null) //to do : "vérifier si elle peut se connecter a la prochaine tile + si elles sont bien à côté".
         {
-            if (this._position.x == _tileManager.PreviousTiles._Position.x + 1 && this._position.y == _tileManager.PreviousTiles._Position.y) //take pos x, check if pos x is +1 in x, & if pos.y is = to this tile.
+            if (this._position.x == _tileManager.PreviousTiles._Position.x + 1 && this._position.y == _tileManager.PreviousTiles._Position.y || this._position.x == _tileManager.PreviousTiles._Position.x - 1 && this._position.y == _tileManager.PreviousTiles._Position.y || this._position.y == _tileManager.PreviousTiles._Position.y + 1 && this._position.x == _tileManager.PreviousTiles._Position.x || this._position.y == _tileManager.PreviousTiles._Position.y - 1 && this._position.x == _tileManager.PreviousTiles._Position.x) //take pos x, check if pos x is +1 in x, & if pos.y is = to this tile.
             {
                 ChangeTile();
-
-            } else if (this._position.x == _tileManager.PreviousTiles._Position.x - 1 && this._position.y == _tileManager.PreviousTiles._Position.y) //take pos x, check if pos x is -1 in x, & if pos.y is = to this tile.
-            {
-                ChangeTile();
-
-            } else if (this._position.y == _tileManager.PreviousTiles._Position.y + 1 && this._position.x == _tileManager.PreviousTiles._Position.x)
-            {
-                ChangeTile();
-
-            } else if (this._position.y == _tileManager.PreviousTiles._Position.y - 1 && this._position.x == _tileManager.PreviousTiles._Position.x)
-            {
-                ChangeTile();
-            } else
+            } 
+            else
             {
                 return;  //pas necessaire || no use
             }
-
         }
-
     }
-
     #endregion
 
     private void ChangeTile() //change UI Tile to Map tile
@@ -78,6 +65,7 @@ public class Tiles : MonoBehaviour
             this._down = _tileManager.NewTilesUI.Down;
             this._left = _tileManager.NewTilesUI.Left;
             this._right = _tileManager.NewTilesUI.Right;
+            _tileManager.PreviousTiles = this;
             UpdateLineRenderer();
         }
 
@@ -131,6 +119,7 @@ public class Tiles : MonoBehaviour
 
     public void StartTile() //start tile
     {
+        isFirst = true;
         _lineRenderer.positionCount = 2;
         _lineRenderer.SetPosition(0, _centerTransform.position);
         if(_up)
