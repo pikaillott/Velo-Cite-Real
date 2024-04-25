@@ -256,6 +256,7 @@ GameObject:
   - component: {fileID: 205656706}
   - component: {fileID: 205656705}
   - component: {fileID: 205656704}
+  - component: {fileID: 205656707}
   m_Layer: 5
   m_Name: Button (2)
   m_TagString: Untagged
@@ -326,7 +327,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 205656705}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 182186829}
+        m_TargetAssemblyTypeName: TileManager, Assembly-CSharp
+        m_MethodName: OnSelectUITile
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 205656707}
+          m_ObjectArgumentAssemblyTypeName: TileSelection, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &205656705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -365,6 +378,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 205656702}
   m_CullTransparentMesh: 1
+--- !u!114 &205656707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 205656702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 217e5606508d4ad439e49d4e26a89993, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _up: 1
+  _down: 0
+  _left: 0
+  _right: 1
 --- !u!1001 &464033098
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1406,8 +1435,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 217e5606508d4ad439e49d4e26a89993, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _up: 0
-  _down: 0
+  _up: 1
+  _down: 1
   _left: 0
   _right: 0
 --- !u!1 &858417493
@@ -1487,6 +1516,7 @@ GameObject:
   - component: {fileID: 986862053}
   - component: {fileID: 986862052}
   - component: {fileID: 986862051}
+  - component: {fileID: 986862054}
   m_Layer: 5
   m_Name: Button (3)
   m_TagString: Untagged
@@ -1558,13 +1588,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 182186829}
+        m_TargetAssemblyTypeName: TileManager, Assembly-CSharp
+        m_MethodName: OnSelectUITile
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgument: {fileID: 986862054}
+          m_ObjectArgumentAssemblyTypeName: TileSelection, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1608,6 +1638,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 986862049}
   m_CullTransparentMesh: 1
+--- !u!114 &986862054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 986862049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 217e5606508d4ad439e49d4e26a89993, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _up: 0
+  _down: 0
+  _left: 0
+  _right: 0
 --- !u!1 &1074197959
 GameObject:
   m_ObjectHideFlags: 0
@@ -1779,6 +1825,7 @@ GameObject:
   - component: {fileID: 1225716040}
   - component: {fileID: 1225716039}
   - component: {fileID: 1225716038}
+  - component: {fileID: 1225716041}
   m_Layer: 5
   m_Name: Button (4)
   m_TagString: Untagged
@@ -1849,7 +1896,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1225716039}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 182186829}
+        m_TargetAssemblyTypeName: TileManager, Assembly-CSharp
+        m_MethodName: OnSelectUITile
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1225716041}
+          m_ObjectArgumentAssemblyTypeName: TileSelection, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1225716039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1888,6 +1947,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1225716036}
   m_CullTransparentMesh: 1
+--- !u!114 &1225716041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1225716036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 217e5606508d4ad439e49d4e26a89993, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _up: 0
+  _down: 0
+  _left: 0
+  _right: 0
 --- !u!1 &1335264242
 GameObject:
   m_ObjectHideFlags: 0
@@ -2168,6 +2243,7 @@ GameObject:
   - component: {fileID: 1606783821}
   - component: {fileID: 1606783820}
   - component: {fileID: 1606783819}
+  - component: {fileID: 1606783822}
   m_Layer: 5
   m_Name: Button (1)
   m_TagString: Untagged
@@ -2239,13 +2315,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 182186828}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 182186829}
+        m_TargetAssemblyTypeName: TileManager, Assembly-CSharp
+        m_MethodName: OnSelectUITile
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgument: {fileID: 1606783822}
+          m_ObjectArgumentAssemblyTypeName: TileSelection, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2289,6 +2365,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1606783817}
   m_CullTransparentMesh: 1
+--- !u!114 &1606783822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1606783817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 217e5606508d4ad439e49d4e26a89993, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _up: 1
+  _down: 0
+  _left: 1
+  _right: 0
 --- !u!1 &1999669527
 GameObject:
   m_ObjectHideFlags: 0
@@ -2435,6 +2527,7 @@ GameObject:
   - component: {fileID: 2023862799}
   - component: {fileID: 2023862798}
   - component: {fileID: 2023862797}
+  - component: {fileID: 2023862800}
   m_Layer: 5
   m_Name: Button (5)
   m_TagString: Untagged
@@ -2505,7 +2598,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2023862798}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 182186829}
+        m_TargetAssemblyTypeName: TileManager, Assembly-CSharp
+        m_MethodName: OnSelectUITile
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2023862800}
+          m_ObjectArgumentAssemblyTypeName: TileSelection, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2023862798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2544,6 +2649,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2023862795}
   m_CullTransparentMesh: 1
+--- !u!114 &2023862800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023862795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 217e5606508d4ad439e49d4e26a89993, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _up: 0
+  _down: 0
+  _left: 0
+  _right: 0
 --- !u!1 &2137660920
 GameObject:
   m_ObjectHideFlags: 0

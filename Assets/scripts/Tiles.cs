@@ -39,9 +39,9 @@ public class Tiles : MonoBehaviour
     }
 
     #region Function TILE ONMOUSE OVER
-    private void _OnMouseOver()
+    private void OnMouseOver()  
     {
-        if (Input.GetMouseButtonDown(0) && _tileManager.NewTiles != null && _tileManager.NewTilesUI != null) //to do : "vérifier si elle peut se connecter a la prochaine tile + si elles sont bien à côté".
+        if (Input.GetMouseButtonDown(0) && _tileManager.NewTilesUI != null) //to do : "vérifier si elle peut se connecter a la prochaine tile + si elles sont bien à côté".
         {
             if (this._position.x == _tileManager.PreviousTiles._Position.x + 1 && this._position.y == _tileManager.PreviousTiles._Position.y) //take pos x, check if pos x is +1 in x, & if pos.y is = to this tile.
             {
@@ -71,12 +71,13 @@ public class Tiles : MonoBehaviour
 
     private void ChangeTile() //change UI Tile to Map tile
     {
-        if (_tileManager.NewTiles._up && _tileManager.PreviousTiles._down || _tileManager.NewTiles._down && _tileManager.PreviousTiles._up || _tileManager.NewTiles._left && _tileManager.PreviousTiles._right || _tileManager.NewTiles._right && _tileManager.PreviousTiles._left)
+        if (_tileManager.NewTilesUI.Up && _tileManager.PreviousTiles._down || _tileManager.NewTilesUI.Down && _tileManager.PreviousTiles._up || _tileManager.NewTilesUI.Left && _tileManager.PreviousTiles._right || _tileManager.NewTilesUI.Right && _tileManager.PreviousTiles._left)
         {
-            this._up = _tileManager.NewTiles._up;
-            this._down = _tileManager.NewTiles._down;
-            this._left = _tileManager.NewTiles._left;
-            this._right = _tileManager.NewTiles._right;
+            print("Change Tile");
+            this._up = _tileManager.NewTilesUI.Up;
+            this._down = _tileManager.NewTilesUI.Down;
+            this._left = _tileManager.NewTilesUI.Left;
+            this._right = _tileManager.NewTilesUI.Right;
             UpdateLineRenderer();
         }
 
