@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Tiles : MonoBehaviour
 {
@@ -9,7 +10,8 @@ public class Tiles : MonoBehaviour
     [SerializeField] private bool _down = false;
     [SerializeField] private bool _left = false;
     [SerializeField] private bool _right = false;
-    [SerializeField] private bool isFirst  = false;
+    [SerializeField] private bool _isFirst  = false;
+    [SerializeField] private bool _isAlreadySet  = false;
     
     [SerializeField] private Transform _upTransform;
     [SerializeField] private Transform _downTransform;
@@ -18,10 +20,14 @@ public class Tiles : MonoBehaviour
     [SerializeField] private Transform _centerTransform;
 
     [SerializeField] private TileManager _tileManager;
-
     [SerializeField] private Vector2 _position;
-
     [SerializeField] private LineRenderer _lineRenderer;
+    [SerializeField] private Color _baseColor = Color.blue; 
+    [SerializeField] private Color _previousColor = Color.red; //previous
+    [SerializeField] private Color _alreadyColor = Color.green;//already
+    [SerializeField] private Sprite _spriteBase;
+    [SerializeField] private Sprite _spritePrevuiys;
+    [SerializeField] private Sprite _spriteAlready;
 
     public Vector2 _Position { get => _position; set => _position = value; }
 
@@ -31,18 +37,15 @@ public class Tiles : MonoBehaviour
     private void Start()
     {
         _tileManager = FindObjectOfType<TileManager>();
+        this.GetComponent<SpriteRenderer>().color = _baseColor;
+        //this.GetComponent<SpriteRenderer>().sprite = _spriteBase;
+        _lineRenderer.positionCount = 0;
 
     }
-
-    private void Update()
-    {
-        UpdateLineRenderer();
-    }
-
     #region Function TILE ONMOUSE OVER
     private void OnMouseOver()  
     {
-        if (Input.GetMouseButtonDown(0) && _tileManager.NewTilesUI != null) //to do : "vérifier si elle peut se connecter a la prochaine tile + si elles sont bien à côté".
+        if (Input.GetMouseButtonDown(0) && _tileManager.NewTilesUI != null && !_isAlreadySet) //to do : "vérifier si elle peut se connecter a la prochaine tile + si elles sont bien à côté".
         {
             if (this._position.x == _tileManager.PreviousTiles._Position.x + 1 && this._position.y == _tileManager.PreviousTiles._Position.y || this._position.x == _tileManager.PreviousTiles._Position.x - 1 && this._position.y == _tileManager.PreviousTiles._Position.y || this._position.y == _tileManager.PreviousTiles._Position.y + 1 && this._position.x == _tileManager.PreviousTiles._Position.x || this._position.y == _tileManager.PreviousTiles._Position.y - 1 && this._position.x == _tileManager.PreviousTiles._Position.x) //take pos x, check if pos x is +1 in x, & if pos.y is = to this tile.
             {
@@ -65,7 +68,10 @@ public class Tiles : MonoBehaviour
             this._down = _tileManager.NewTilesUI.Down;
             this._left = _tileManager.NewTilesUI.Left;
             this._right = _tileManager.NewTilesUI.Right;
+            _tileManager.PreviousTiles.GetComponent<SpriteRenderer>().color = _alreadyColor;
             _tileManager.PreviousTiles = this;
+            this.GetComponent<SpriteRenderer>().color = _previousColor;
+            _isAlreadySet = true;
             UpdateLineRenderer();
         }
 
@@ -119,17 +125,39 @@ public class Tiles : MonoBehaviour
 
     public void StartTile() //start tile
     {
-        isFirst = true;
-        _lineRenderer.positionCount = 2;
-        _lineRenderer.SetPosition(0, _centerTransform.position);
-        if(_up)
-            _lineRenderer.SetPosition(1, _upTransform.position);
-        else if (_down)
-            _lineRenderer.SetPosition(1, _downTransform.position);
-        else if (_left)
-            _lineRenderer.SetPosition(1, _leftTransform.position);
-        else if (_right)
-            _lineRenderer.SetPosition(1, _rightTransform.position);
+        _isFirst = true;
+        _lineRenderer.positionCount = 9;
+        this._up = true;
+        this._down = true;
+        this._left = true;
+        this._right = true;
+        int y = 0;
+        for(int i = 0; i < 9; i++)
+        {
+            if (i % 2 == 0)
+            {
+                _lineRenderer.SetPosition(i, _centerTransform.position);
+            }
+            else if (i == 1)
+            {
+                _lineRenderer.SetPosition(i, _upTransform.position);
+            }
+            else if (i == 3)
+            {
+                _lineRenderer.SetPosition(i, _downTransform.position);
+            }
+            else if (i == 5)
+            {
+                _lineRenderer.SetPosition(i, _leftTransform.position);
+            }
+            else if (i == 7)
+            {
+                _lineRenderer.SetPosition(i, _rightTransform.position);
+            }
+        }
+        this.GetComponent<SpriteRenderer>().color = _previousColor;
+
+        _isAlreadySet = true;
             
     }
 
