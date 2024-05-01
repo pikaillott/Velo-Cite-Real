@@ -20,7 +20,6 @@ public class Tiles : MonoBehaviour
     [SerializeField] private bool _rightEx = false;
     [SerializeField] private bool _isAlreadySet  = false;
     [SerializeField] private bool _isMonument  = false;
-    [SerializeField] private bool _isFinish  = false;
     
     [SerializeField] private Transform _upTransform;
     [SerializeField] private Transform _downTransform;
@@ -246,7 +245,6 @@ public class Tiles : MonoBehaviour
 
     public void LastTile()
     {
-        this._isFinish = true;
         this.GetComponent<SpriteRenderer>().color = Color.yellow;
     }
 
