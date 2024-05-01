@@ -172,9 +172,9 @@ public class Tiles : MonoBehaviour
     {
         _lineRenderer.positionCount = 3;
         _lineRenderer.SetPosition(1, _centerTransform.position);
-        //le line renderer va forcément passé par le milieu de la tuille
+        //line renderer will always go through center
         
-        //puis on regarde quelle direction est prise par la tile
+        //check what direction is taken for tile
 
         if (_up)
         {
