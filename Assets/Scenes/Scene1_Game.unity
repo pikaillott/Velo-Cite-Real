@@ -1700,6 +1700,7 @@ MonoBehaviour:
   _lastTile: {fileID: 0}
   _newTilesUI: {fileID: 0}
   _lenghtCube: {x: 15, y: 12}
+  _nbRound: 0
 --- !u!4 &182186830
 Transform:
   m_ObjectHideFlags: 0
@@ -15034,11 +15035,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4169899989518883320, guid: 9a292ea5660efe84ea5f681ee1ad1434, type: 3}
       propertyPath: _position.x
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4169899989518883320, guid: 9a292ea5660efe84ea5f681ee1ad1434, type: 3}
       propertyPath: _position.y
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6335175672046713096, guid: 9a292ea5660efe84ea5f681ee1ad1434, type: 3}
       propertyPath: m_LocalPosition.x

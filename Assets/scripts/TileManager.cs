@@ -11,6 +11,7 @@ public class TileManager : MonoBehaviour
     [SerializeField] private Tiles _lastTile = null;
     [SerializeField] private TileSelection _newTilesUI = null;
     [SerializeField] private Vector2 _lenghtCube;
+    [SerializeField] private int _nbRound = 0;
     
     public Vector2 LenghtCube { get => _lenghtCube; set => _lenghtCube = value; }
     public Tiles PreviousTiles { get => _previousTiles; set => _previousTiles = value; }
@@ -86,7 +87,24 @@ public class TileManager : MonoBehaviour
 
     public void ResetGame()
     {
-        print("win");
+        if (_nbRound == 3)
+        {
+            print("winComplete");
+        }
+        _lastTile.Up = true;
+        _lastTile.Down = true;
+        _lastTile.Left = true;
+        _lastTile.Right = true;
+        _previousTiles = _lastTile;
+        _nbRound++;
+        Tiles[] allTiles = FindObjectsOfType<Tiles>();
+        int FinishTile = Random.Range(0, allTiles.Length);
+        while ((allTiles[FinishTile] == this._lastTile) || allTiles[FinishTile].IsMonument)
+        {
+            FinishTile = Random.Range(0, allTiles.Length);
+        }
+        _lastTile = allTiles[FinishTile];
+        _lastTile.LastTile();
     }
     
 
