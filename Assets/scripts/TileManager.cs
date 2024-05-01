@@ -52,20 +52,28 @@ public class TileManager : MonoBehaviour
         bool isRight = PreviousTiles.Right && !PreviousTiles.RightConnected;
         bool isUp = PreviousTiles.Up && !PreviousTiles.UpConnected;
         bool isDown = PreviousTiles.Down && !PreviousTiles.DownConnected;
-        print(isLeft + " " + isRight + " " + isUp + " " + isDown);
-        if (isLeft && PreviousTiles.transform.position.x == _lastTile.transform.position.x - 1)
+        bool posLeft = PreviousTiles.Position.x == _lastTile.Position.x - 1;
+        bool posRight = PreviousTiles.Position.x == _lastTile.Position.x + 1;
+        bool posUp = PreviousTiles.Position.y == _lastTile.Position.y - 1;
+        bool posDown = PreviousTiles.Position.y == _lastTile.Position.y + 1;
+        print(isLeft + " " + posLeft);
+        print(isRight + " " + posRight);
+        print(isUp + " " + posUp);
+        print(isDown + " " + posDown);
+        
+        if (isLeft && posLeft)
         {
             ResetGame();
         }
-        else if (isRight && PreviousTiles.transform.position.x == _lastTile.transform.position.x + 1)
+        else if (isRight && posRight)
         {
             ResetGame();
         }
-        else if (isUp && PreviousTiles.transform.position.y == _lastTile.transform.position.y + 1)
+        else if (isUp && posUp)
         {
             ResetGame();
         }
-        else if (isDown && PreviousTiles.transform.position.y == _lastTile.transform.position.y - 1)
+        else if (isDown && posDown)
         {
             ResetGame();
         }
