@@ -81,66 +81,49 @@ public class Tiles : MonoBehaviour
             if ( isPreviousTileRight || isPreviousTileLeft || isPreviousTileUp || isPreviousTileDown) //take pos x, check if pos x is +1 in x, & if pos.y is = to this tile.
             {
                 ChangeTile();
-            } 
+            }
+            else
+            {
+                Debug.Log("Tile is not connected");
+            }
         }
     }
     #endregion
 
     private void GetDirectionConnected()
     {
-        /*if (_tileManager.PreviousTiles.IsMonument)
-        {
-            print(this._position.x);
-            print(_tileManager.PreviousTiles.Position.x + 1);
-            print(_tileManager.NewTilesUI.Left);
-            if (this._position.x == _tileManager.PreviousTiles.Position.x - 1 && _tileManager.NewTilesUI.Left)
-            {
-                this._leftConnected = true;
-            }
-            else if (this._position.x == _tileManager.PreviousTiles.Position.x + 1 && _tileManager.NewTilesUI.Right)
-            {
-                this._rightConnected = true;
-            }
-            else if (this._position.y == _tileManager.PreviousTiles.Position.y - 1 && _tileManager.NewTilesUI.Down)
-            {
-                this._downConnected = true;
-            }
-            else if (this._position.y == _tileManager.PreviousTiles.Position.y + 1 && _tileManager.NewTilesUI.Up)
-            {
-                this._upConnected = true;
-            }
-            
-        }
-        else*/
-        {
-            if(_tileManager.NewTilesUI.Up && _tileManager.PreviousTiles._down)
-                this._upConnected = true;
-            if(_tileManager.NewTilesUI.Down && _tileManager.PreviousTiles._up)
-                this._downConnected = true;
-            if(_tileManager.NewTilesUI.Left && _tileManager.PreviousTiles._right)
-                this._leftConnected = true;
-            if(_tileManager.NewTilesUI.Right && _tileManager.PreviousTiles._left)
-                this._rightConnected = true;
-        }
+        bool checkTransUp = this._position.y == _tileManager.PreviousTiles.Position.y - 1;
+        bool checkTransDown = this._position.y == _tileManager.PreviousTiles.Position.y + 1;
+        bool checkTransLeft = this._position.x == _tileManager.PreviousTiles.Position.x + 1;
+        bool checkTransRight = this._position.x == _tileManager.PreviousTiles.Position.x - 1;
+
+        if(_tileManager.NewTilesUI.Up && _tileManager.PreviousTiles._down && checkTransUp)
+            this._upConnected = true;
+        if(_tileManager.NewTilesUI.Down && _tileManager.PreviousTiles._up && checkTransDown)
+            this._downConnected = true;
+        if(_tileManager.NewTilesUI.Left && _tileManager.PreviousTiles._right && checkTransLeft)
+            this._leftConnected = true;
+        if(_tileManager.NewTilesUI.Right && _tileManager.PreviousTiles._left && checkTransRight)
+            this._rightConnected = true;
         
     }
     private void ChangeTile() //change UI Tile to Map tile
     {
-        bool isUpCheck = (_tileManager.NewTilesUI.Up && _tileManager.PreviousTiles._down &&
-                          !_tileManager.PreviousTiles.DownConnected &&
-                          this._position.y == _tileManager.PreviousTiles.Position.y - 1);
+        bool checkTransUp = this._position.y == _tileManager.PreviousTiles.Position.y - 1;
+        bool isUpCheck = _tileManager.NewTilesUI.Up && _tileManager.PreviousTiles._down &&
+                          !_tileManager.PreviousTiles.DownConnected && checkTransUp;
         
-        bool isDownCheck = (_tileManager.NewTilesUI.Down && _tileManager.PreviousTiles._up &&
-                            !_tileManager.PreviousTiles.UpConnected &&
-                            this._position.y == _tileManager.PreviousTiles.Position.y + 1);
+        bool checkTransDown = this._position.y == _tileManager.PreviousTiles.Position.y + 1;
+        bool isDownCheck = _tileManager.NewTilesUI.Down && _tileManager.PreviousTiles._up &&
+                            !_tileManager.PreviousTiles.UpConnected && checkTransDown;
         
-        bool isLeftCheck = ( _tileManager.NewTilesUI.Left && _tileManager.PreviousTiles._right && 
-                             !_tileManager.PreviousTiles.RightConnected && 
-                             this._position.x == _tileManager.PreviousTiles.Position.x - 1);
+        bool checkTransLeft = this._position.x == _tileManager.PreviousTiles.Position.x + 1;
+        bool isLeftCheck = _tileManager.NewTilesUI.Left && _tileManager.PreviousTiles._right && 
+                             !_tileManager.PreviousTiles.RightConnected && checkTransLeft;
         
-        bool isRightCheck = (_tileManager.NewTilesUI.Right && _tileManager.PreviousTiles._left && 
-                             !_tileManager.PreviousTiles.LeftConnected && 
-                             this._position.x == _tileManager.PreviousTiles.Position.x + 1);
+        bool checkTransRight = this._position.x == _tileManager.PreviousTiles.Position.x - 1;
+        bool isRightCheck = _tileManager.NewTilesUI.Right && _tileManager.PreviousTiles._left && 
+                             !_tileManager.PreviousTiles.LeftConnected && checkTransRight;
         
         if ( isUpCheck || isDownCheck || isLeftCheck || isRightCheck)
         {
@@ -163,7 +146,10 @@ public class Tiles : MonoBehaviour
             _isAlreadySet = true;
             UpdateLineRenderer();
         }
-
+        else
+        {
+            Debug.Log("Tile can t be change" + isUpCheck + checkTransUp + " "+ isDownCheck + checkTransDown+ " " +  isLeftCheck + checkTransLeft + " " + isRightCheck + isRightCheck);
+        }
     }
 
     #region Function LINE RENDERER CONTROLLER

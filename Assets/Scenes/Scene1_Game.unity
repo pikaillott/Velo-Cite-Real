@@ -1699,7 +1699,7 @@ MonoBehaviour:
   _previousTiles: {fileID: 0}
   _lastTile: {fileID: 0}
   _newTilesUI: {fileID: 0}
-  _lenghtCube: {x: 0, y: 0}
+  _lenghtCube: {x: 15, y: 12}
 --- !u!4 &182186830
 Transform:
   m_ObjectHideFlags: 0
