@@ -52,8 +52,8 @@ public class TileManager : MonoBehaviour
         bool isRight = PreviousTiles.Right && !PreviousTiles.RightConnected;
         bool isUp = PreviousTiles.Up && !PreviousTiles.UpConnected;
         bool isDown = PreviousTiles.Down && !PreviousTiles.DownConnected;
-        bool posLeft = PreviousTiles.Position.x == _lastTile.Position.x - 1;
-        bool posRight = PreviousTiles.Position.x == _lastTile.Position.x + 1;
+        bool posLeft = PreviousTiles.Position.x == _lastTile.Position.x + 1;
+        bool posRight = PreviousTiles.Position.x == _lastTile.Position.x - 1;
         bool posUp = PreviousTiles.Position.y == _lastTile.Position.y - 1;
         bool posDown = PreviousTiles.Position.y == _lastTile.Position.y + 1;
         print(isLeft + " " + posLeft);
