@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class TileManager : MonoBehaviour
@@ -81,6 +82,7 @@ public class TileManager : MonoBehaviour
         else
         {
             print("lose");
+            SceneManager.LoadScene(2);
         }
             
     }
@@ -90,6 +92,7 @@ public class TileManager : MonoBehaviour
         if (_nbRound == 3)
         {
             print("winComplete");
+            SceneManager.LoadScene(3);
         }
         _lastTile.Up = true;
         _lastTile.Down = true;
