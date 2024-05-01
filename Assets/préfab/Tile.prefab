@@ -105,9 +105,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _up: 0
+  _upConnected: 0
+  _upEx: 0
   _down: 0
+  _downConnected: 0
+  _downEx: 0
   _left: 0
+  _leftConnected: 0
+  _leftEx: 0
   _right: 0
+  _rightConnected: 0
+  _rightEx: 0
+  _isAlreadySet: 0
+  _isMonument: 0
+  _isFinish: 0
   _upTransform: {fileID: 5919645126659987630}
   _downTransform: {fileID: 3223313049748272410}
   _leftTransform: {fileID: 4209680660500766898}
@@ -116,6 +127,12 @@ MonoBehaviour:
   _tileManager: {fileID: 0}
   _position: {x: 0, y: 0}
   _lineRenderer: {fileID: 8653576953461385827}
+  _baseColor: {r: 0.8867924, g: 0.7970132, b: 0.6483624, a: 1}
+  _previousColor: {r: 0.8584906, g: 0.6490418, b: 0.41709685, a: 1}
+  _alreadyColor: {r: 0.9811321, g: 0.8839702, b: 0.6247775, a: 1}
+  _spriteBase: {fileID: 21300000, guid: 2f1df3449b600f9418f3f6debd7c5cb1, type: 3}
+  _spritePrevuiys: {fileID: 0}
+  _spriteAlready: {fileID: 0}
 --- !u!61 &8193308444244641781
 BoxCollider2D:
   m_ObjectHideFlags: 0
